@@ -1,107 +1,87 @@
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one or more
-    contributor license agreements.  See the NOTICE file distributed with
-    this work for additional information regarding copyright ownership.
-    The ASF licenses this file to you under the Apache License, Version 2.0
-    (the "License"); you may not use this file except in compliance with
-    the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-    
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
-
-<img src="/docs/images/CarbonData_logo.png" width="200" height="40">
-
-Apache CarbonData is an indexed columnar data store solution for fast analytics on big data platform, e.g. Apache Hadoop, Apache Spark, etc.
-
-You can find the latest CarbonData document and learn more at:
-[https://carbondata.apache.org](https://carbondata.apache.org/)
-
-[CarbonData cwiki](https://cwiki.apache.org/confluence/display/CARBONDATA/)
-
-## Status
-Spark2.4:
-[![Coverage Status](https://coveralls.io/repos/github/apache/carbondata/badge.svg?branch=master)](https://coveralls.io/github/apache/carbondata?branch=master)
-<a href="https://scan.coverity.com/projects/carbondata">
-  <img alt="Coverity Scan Build Status"
-       src="https://scan.coverity.com/projects/13444/badge.svg"/>
-</a>
-
-## Features
-CarbonData file format is a columnar store in HDFS, it has many features that a modern columnar format has, such as splittable, compression schema, complex data type etc, and CarbonData has following unique features:
-* Stores data along with index: it can significantly accelerate query performance and reduces the I/O scans and CPU resources, where there are filters in the query.  CarbonData index consists of multiple level of indices, a processing framework can leverage this index to reduce the task it needs to schedule and process, and it can also do skip scan in more finer grain unit (called blocklet) in task side scanning instead of scanning the whole file.
-* Operable encoded data: through supporting efficient compression and global encoding schemes, can query on compressed/encoded data, the data can be converted just before returning the results to the users, which is "late materialized".
-* Supports for various use cases with one single Data format : like interactive OLAP-style query, Sequential Access (big scan), Random Access (narrow scan).
-
-## Building CarbonData
-CarbonData is built using Apache Maven, to [build CarbonData](https://github.com/apache/carbondata/blob/master/build)
-
-## Online Documentation
-* [What is CarbonData](https://github.com/apache/carbondata/blob/master/docs/introduction.md)
-* [Quick Start](https://github.com/apache/carbondata/blob/master/docs/quick-start-guide.md)
-* [Use Cases](https://github.com/apache/carbondata/blob/master/docs/usecases.md)
-* [Language Reference](https://github.com/apache/carbondata/blob/master/docs/language-manual.md)
- * [CarbonData Data Definition Language](https://github.com/apache/carbondata/blob/master/docs/ddl-of-carbondata.md) 
- * [CarbonData Data Manipulation Language](https://github.com/apache/carbondata/blob/master/docs/dml-of-carbondata.md) 
- * [CarbonData Streaming Ingestion](https://github.com/apache/carbondata/blob/master/docs/streaming-guide.md) 
- * [Configuring CarbonData](https://github.com/apache/carbondata/blob/master/docs/configuration-parameters.md) 
- * [Index Developer Guide](https://github.com/apache/carbondata/blob/master/docs/index-developer-guide.md) 
- * [Data Types](https://github.com/apache/carbondata/blob/master/docs/supported-data-types-in-carbondata.md) 
-* [CarbonData Index Management](https://github.com/apache/carbondata/blob/master/docs/index/index-management.md) 
- * [CarbonData BloomFilter Index](https://github.com/apache/carbondata/blob/master/docs/index/bloomfilter-index-guide.md) 
- * [CarbonData Lucene Index](https://github.com/apache/carbondata/blob/master/docs/index/lucene-index-guide.md)
- * [CarbonData MV](https://github.com/apache/carbondata/blob/master/docs/mv-guide.md)
-* [Carbondata Secondary Index](https://github.com/apache/carbondata/blob/master/docs/index/secondary-index-guide.md)
-* [Heterogeneous format segments in carbondata](https://github.com/apache/carbondata/blob/master/docs/addsegment-guide.md)
-* [SDK Guide](https://github.com/apache/carbondata/blob/master/docs/sdk-guide.md) 
-* [C++ SDK Guide](https://github.com/apache/carbondata/blob/master/docs/csdk-guide.md)
-* [Performance Tuning](https://github.com/apache/carbondata/blob/master/docs/performance-tuning.md) 
-* [S3 Storage](https://github.com/apache/carbondata/blob/master/docs/s3-guide.md)
-* [Distributed Index Server](https://github.com/apache/carbondata/blob/master/docs/index-server.md)
-* [CDC and SCD](https://github.com/apache/carbondata/blob/master/docs/scd-and-cdc-guide.md)
-* [Carbon as Spark's Datasource](https://github.com/apache/carbondata/blob/master/docs/carbon-as-spark-datasource-guide.md) 
-* [FAQs](https://github.com/apache/carbondata/blob/master/docs/faq.md) 
-
-## Experimental Features
-
-Some features are marked as experimental because the syntax/implementation might change in the future.
-1. Hybrid format table using Add Segment.
-2. Accelerating performance using MV on parquet/orc.
-3. Merge API for Spark DataFrame.
-4. Hive write for non-transactional table.
-5. Secondary Index as a Coarse Grain Index in query processing.
-
-##  Integration
-* [Hive](https://github.com/apache/carbondata/blob/master/docs/hive-guide.md)
-* [Presto](https://github.com/apache/carbondata/blob/master/docs/prestodb-guide.md)
-* [Alluxio](https://github.com/apache/carbondata/blob/master/docs/alluxio-guide.md)
-* [Flink](https://github.com/apache/carbondata/blob/master/docs/flink-integration-guide.md)
-
-## Other Technical Material
-* [Apache CarbonData meetup material](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=66850609)
-* [Use Case Articles](https://cwiki.apache.org/confluence/display/CARBONDATA/CarbonData+Articles)
-
-## Fork and Contribute
-This is an active open source project for everyone, and we are always open to people who want to use this system or contribute to it. 
-This guide document introduces [how to contribute to CarbonData](https://github.com/apache/carbondata/blob/master/docs/how-to-contribute-to-apache-carbondata.md).
-
-## Contact us
-To get involved in CarbonData:
-
-* First join by emailing to [dev-subscribe@carbondata.apache.org](mailto:dev-subscribe@carbondata.apache.org), then you can discuss issues by emailing to [dev@carbondata.apache.org](mailto:dev@carbondata.apache.org). 
-  You can also directly visit [dev@carbondata.apache.org](https://lists.apache.org/list.html?dev@carbondata.apache.org). 
-  Or you can visit [Apache CarbonData Dev Mailing List archive](https://lists.apache.org/list.html?dev@carbondata.apache.org). 
-  
-* Report issues on [github issues](https://github.com/apache/carbondata/issues).
-
-* You can also slack to get in touch with the community. After we invite you, you can use this [Slack Link](https://carbondataworkspace.slack.com/) to sign in to CarbonData.
-  
-
-## About
-Apache CarbonData is an open source project of The Apache Software Foundation (ASF).
-
+<div class="Box-sc-g0xbh4-0 bJMeLZ js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text">
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="/apache/carbondata/blob/master/docs/images/CarbonData_logo.png"><img src="/apache/carbondata/raw/master/docs/images/CarbonData_logo.png" width="200" height="40" style="max-width: 100%;"></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache CarbonData 是一种索引列式数据存储解决方案，用于在大数据平台（例如 Apache Hadoop、Apache Spark 等）上进行快速分析。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以在以下位置找到最新的 CarbonData 文档并了解更多信息：
+ https: </font></font><a href="https://carbondata.apache.org/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">//carbondata.apache.org</font></font></a></p>
+<p dir="auto"><a href="https://cwiki.apache.org/confluence/display/CARBONDATA/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData 维基百科</font></font></a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地位</font></font></h2><a id="user-content-status" class="anchor" aria-label="永久链接：状态" href="#status"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spark2.4：
+</font></font><a href="https://coveralls.io/github/apache/carbondata?branch=master" rel="nofollow"><img src="https://camo.githubusercontent.com/be36a55aac4ea3db68ce5c2da3b7ce74e82060b7dc30532d750b56e0ca9f155e/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6769746875622f6170616368652f636172626f6e646174612f62616467652e7376673f6272616e63683d6d6173746572" alt="覆盖状态" data-canonical-src="https://coveralls.io/repos/github/apache/carbondata/badge.svg?branch=master" style="max-width: 100%;"></a>
+<a href="https://scan.coverity.com/projects/carbondata" rel="nofollow">
+<img alt="Coverity 扫描构建状态" src="https://camo.githubusercontent.com/8877cf66201571fdd33a2c88baea3830e6af3afc505cc910b4b41fd6c28d96f1/68747470733a2f2f7363616e2e636f7665726974792e636f6d2f70726f6a656374732f31333434342f62616467652e737667" data-canonical-src="https://scan.coverity.com/projects/13444/badge.svg" style="max-width: 100%;">
+</a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特征</font></font></h2><a id="user-content-features" class="anchor" aria-label="永久链接：特点" href="#features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData文件格式是HDFS中的列式存储，它具有现代列式格式所具有的许多功能，例如可分割、压缩模式、复杂数据类型等，并且CarbonData具有以下独特功能：</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将数据与索引一起存储：在查询中有过滤器的情况下，可以显着提高查询性能并减少 I/O 扫描和 CPU 资源。</font><font style="vertical-align: inherit;">CarbonData索引由多级索引组成，处理框架可以利用该索引来减少需要调度和处理的任务，并且还可以在任务侧扫描中以更细粒度的单元（称为blocklet）进行跳跃扫描而不是扫描整个文件。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可操作的编码数据：通过支持高效的压缩和全局编码方案，可以对压缩/编码数据进行查询，在将结果返回给用户之前可以对数据进行转换，即“晚物化”。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持使用一种数据格式的各种用例：例如交互式 OLAP 式查询、顺序访问（大扫描）、随机访问（窄扫描）。</font></font></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">构建碳数据</font></font></h2><a id="user-content-building-carbondata" class="anchor" aria-label="永久链接：构建 CarbonData" href="#building-carbondata"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData是使用Apache Maven构建的，来</font></font><a href="https://github.com/apache/carbondata/blob/master/build"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">构建CarbonData</font></font></a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在线文档</font></font></h2><a id="user-content-online-documentation" class="anchor" aria-label="永久链接：在线文档" href="#online-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/introduction.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">什么是碳数据</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/quick-start-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速开始</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/usecases.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用例</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/language-manual.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">语言参考</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/ddl-of-carbondata.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData数据定义语言</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/dml-of-carbondata.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData数据操作语言</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/streaming-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData 流式摄取</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/configuration-parameters.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置CarbonData</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/index-developer-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指数开发指南</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/supported-data-types-in-carbondata.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">数据类型</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/index/index-management.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData指数管理</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/index/bloomfilter-index-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData BloomFilter 索引</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/index/lucene-index-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData Lucene 索引</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/mv-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CarbonData MV</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/index/secondary-index-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carbondata二级索引</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/addsegment-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carbondata 中的异构格式段</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/sdk-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SDK使用指南</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/csdk-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">C++ SDK 指南</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/performance-tuning.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">性能调优</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/s3-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S3存储</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/index-server.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分布式索引服务器</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/scd-and-cdc-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CDC 和 SCD</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/carbon-as-spark-datasource-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carbon 作为 Spark 的数据源</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/faq.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">常见问题解答</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实验特点</font></font></h2><a id="user-content-experimental-features" class="anchor" aria-label="永久链接：实验功能" href="#experimental-features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">某些功能被标记为实验性的，因为语法/实现将来可能会发生变化。</font></font></p>
+<ol dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用添加段的混合格式表。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在 parquet/orc 上使用 MV 加速性能。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spark DataFrame 的合并 API。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hive 针对非事务表进行写入。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">二级索引在查询处理中作为粗粒度索引。</font></font></li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一体化</font></font></h2><a id="user-content-integration" class="anchor" aria-label="永久链接：集成" href="#integration"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/hive-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">蜂巢</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/prestodb-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">急板</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/alluxio-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">阿鲁西奥</font></font></a></li>
+<li><a href="https://github.com/apache/carbondata/blob/master/docs/flink-integration-guide.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">弗林克</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他技术材料</font></font></h2><a id="user-content-other-technical-material" class="anchor" aria-label="永久链接：其他技术材料" href="#other-technical-material"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li><a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=66850609" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache CarbonData 聚会材料</font></font></a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/CARBONDATA/CarbonData+Articles" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用例文章</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分叉并贡献</font></font></h2><a id="user-content-fork-and-contribute" class="anchor" aria-label="永久链接：分叉并贡献" href="#fork-and-contribute"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这是一个对每个人来说都是活跃的开源项目，我们始终对想要使用这个系统或为其做出贡献的人开放。</font><font style="vertical-align: inherit;">本指南文档介绍了</font></font><a href="https://github.com/apache/carbondata/blob/master/docs/how-to-contribute-to-apache-carbondata.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如何为 CarbonData 做出贡献</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></h2><a id="user-content-contact-us" class="anchor" aria-label="永久链接：联系我们" href="#contact-us"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参与CarbonData：</font></font></p>
+<ul dir="auto">
+<li>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首先通过发送电子邮件至</font></font><a href="mailto:dev-subscribe@carbondata.apache.org"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dev-subscribe@carbondata.apache.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加入，然后您可以通过发送电子邮件至</font></font><a href="mailto:dev@carbondata.apache.org"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dev@carbondata.apache.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讨论问题。</font><font style="vertical-align: inherit;">您也可以直接访问</font></font><a href="https://lists.apache.org/list.html?dev@carbondata.apache.org" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dev@carbondata.apache.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">或者您可以访问</font></font><a href="https://lists.apache.org/list.html?dev@carbondata.apache.org" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache CarbonData Dev 邮件列表存档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li>
+<p dir="auto"><font style="vertical-align: inherit;"></font><a href="https://github.com/apache/carbondata/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在github issues</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上报告问题</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您也可以懈怠与社区取得联系。</font><font style="vertical-align: inherit;">在我们邀请您之后，您可以使用此</font></font><a href="https://carbondataworkspace.slack.com/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Slack 链接</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录 CarbonData。</font></font></p>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于</font></font></h2><a id="user-content-about" class="anchor" aria-label="永久链接：关于" href="#about"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache CarbonData 是 Apache 软件基金会 (ASF) 的一个开源项目。</font></font></p>
+</article></div>
